@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            color-scheme: light dark;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="myIframe" src="https://www.tokyvideo.com/es/embed/124094" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px">
+    </iframe>
+
+
+    <script>
+        var iframe = document.getElementById('myIframe');
+
+        iframe.addEventListener('click', function () {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', function () {
+            if (document.fullscreenElement) {
+                setFullscreenOrientation();
+            } else {
+                resetFullscreenOrientation();
+            }
+        });
+
+        function setFullscreenOrientation() {
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock("landscape");
+            }
+        }
+
+        function resetFullscreenOrientation() {
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
+        }
+    </script>
+</body>
+</html>
